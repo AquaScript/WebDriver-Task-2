@@ -32,4 +32,9 @@ describe('Pastebin Test', () => {
     it('should fill out the paste name', async () => {
         await pastebinPage.setName('how to gain dominance among developers');
     });
+
+    it('should save the paste', async () => {
+        await pastebinPage.savePaste();
+    });
+    
 });

@@ -8,6 +8,7 @@ class PastebinPage {
         this.nameInput = $('//*[@id="postform-name"]');
         this.syntaxHighlightingDropdown = $('//*[@id="select2-postform-format-container"]');
         this.bashOption = $('//li[contains(@id, "select2-postform-format-result") and contains(text(), "Bash")]');
+        this.createNewPasteButton = $('//button[contains(@class, "btn -big") and text()="Create New Paste"]');
 
     }
 
@@ -39,11 +40,16 @@ class PastebinPage {
         await this.tenMinutesOption.click();
     }
 
-
     async setName(name) {
         await this.nameInput.waitForDisplayed({ timeout: 10000 });
         await this.nameInput.setValue(name);
     }
+
+    async savePaste() {
+        await this.createNewPasteButton.waitForDisplayed({ timeout: 10000 });
+        await this.createNewPasteButton.click();
+    }
+
 }
 
 export default PastebinPage;
