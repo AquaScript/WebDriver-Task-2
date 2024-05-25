@@ -6,6 +6,9 @@ class PastebinPage {
         this.expirationDropdown = $('//*[@id="select2-postform-expiration-container"]');
         this.tenMinutesOption = $('//li[contains(text(), "10 Minutes")]');
         this.nameInput = $('//*[@id="postform-name"]');
+        this.syntaxHighlightingDropdown = $('//*[@id="select2-postform-format-container"]');
+        this.bashOption = $('//li[contains(@id, "select2-postform-format-result") and contains(text(), "Bash")]');
+
     }
 
     async open() {
@@ -22,12 +25,20 @@ class PastebinPage {
         await this.codeTextarea.setValue(code);
     }
 
+    async setSyntaxHighlighting() {
+        await this.syntaxHighlightingDropdown.waitForDisplayed({ timeout: 10000 });
+        await this.syntaxHighlightingDropdown.click();
+        await this.bashOption.waitForDisplayed({ timeout: 5000 });
+        await this.bashOption.click();
+    }
+
     async setExpiration() {
         await this.expirationDropdown.waitForDisplayed({ timeout: 10000 });
         await this.expirationDropdown.click();
         await this.tenMinutesOption.waitForDisplayed({ timeout: 5000 });
         await this.tenMinutesOption.click();
     }
+
 
     async setName(name) {
         await this.nameInput.waitForDisplayed({ timeout: 10000 });

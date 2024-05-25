@@ -21,6 +21,9 @@ describe('Pastebin Test', () => {
     git push origin master --force`);
     });
     
+    it('should select Bash syntax highlighting', async () => {
+        await pastebinPage.setSyntaxHighlighting();
+    });
 
     it('should select paste expiration', async () => {
         await pastebinPage.setExpiration();
