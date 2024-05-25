@@ -16,14 +16,17 @@ describe('Pastebin Test', () => {
     });
 
     it('should fill out the code field', async () => {
-        await pastebinPage.setCode('Hello from WebDriver');
+        await pastebinPage.setCode(`git config --global user.name "New Sheriff in Town"
+    git reset $(git commit-tree HEAD^{tree} -m "Legacy code")
+    git push origin master --force`);
     });
+    
 
     it('should select paste expiration', async () => {
         await pastebinPage.setExpiration();
     });
 
     it('should fill out the paste name', async () => {
-        await pastebinPage.setName('helloweb');
+        await pastebinPage.setName('how to gain dominance among developers');
     });
 });
