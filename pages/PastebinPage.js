@@ -10,6 +10,7 @@ class PastebinPage {
         this.bashOption = $('//li[contains(@id, "select2-postform-format-result") and contains(text(), "Bash")]');
         this.createNewPasteButton = $('//button[contains(@class, "btn -big") and text()="Create New Paste"]');
         this.pasteTitle = $('/html/body/div[1]/div[2]/div[1]/div[1]/div[2]/div[3]/div[1]/h1');
+        this.syntaxHighlightingElement = $('//div[@class="left"]/a[contains(@href, "/archive/bash")]');
 
     }
 
@@ -57,6 +58,11 @@ class PastebinPage {
         expect(actualTitle).toEqual(expectedTitle);
     }
 
+    async verifySyntaxHighlighting() {
+        await this.syntaxHighlightingElement.waitForDisplayed({ timeout: 10000 });
+        const isBashSyntaxHighlighting = await this.syntaxHighlightingElement.isDisplayed();
+        expect(isBashSyntaxHighlighting).toBe(true);
+    }
 }
 
 export default PastebinPage;

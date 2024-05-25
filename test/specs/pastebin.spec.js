@@ -41,5 +41,9 @@ describe('Pastebin Test', () => {
         const expectedTitle = 'how to gain dominance among developers';
         await pastebinPage.verifyPasteTitle(expectedTitle);
     });
-    
+
+    it('should have the correct syntax highlighting', async () => {
+        await pastebinPage.verifySyntaxHighlighting();
+    });
+
 });
