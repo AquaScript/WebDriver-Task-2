@@ -36,5 +36,10 @@ describe('Pastebin Test', () => {
     it('should save the paste', async () => {
         await pastebinPage.savePaste();
     });
+
+    it('should have the correct paste title', async () => {
+        const expectedTitle = 'how to gain dominance among developers';
+        await pastebinPage.verifyPasteTitle(expectedTitle);
+    });
     
 });
